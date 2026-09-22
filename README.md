@@ -90,9 +90,7 @@ Planned extensions (discussed in the report): stochastic programming under deman
 
 ## Author
 
-**Israel Oluwamayomikun Alabi** 
-MSc Mathematical Sciences (Major: Data Science)
-African Institute for Mathematical Sciences, Cameroon.
+**Funmilayo Adegoroye** — Nursing graduate (First Class Honours, University of Ibadan) with research interests in nursing education, workplace bullying & incivility, and gender and health. This project applies operations-research methods to a healthcare operations problem.
 
 ## License
 
