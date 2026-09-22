@@ -1,4 +1,3 @@
-import React from 'react';
 import { OptimizationResult } from '../lib/supabase';
 import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
@@ -7,14 +6,6 @@ interface ComparisonProps {
     name: string;
     result: OptimizationResult;
   }>;
-}
-
-interface MetricChange {
-  name: string;
-  baseline: number;
-  current: number;
-  unit: string;
-  isPositive: boolean;
 }
 
 export function Comparison({ scenarios }: ComparisonProps) {
@@ -27,43 +18,6 @@ export function Comparison({ scenarios }: ComparisonProps) {
   }
 
   const baseline = scenarios[0].result;
-  const metrics: MetricChange[] = scenarios.slice(1).flatMap(scenario => [
-    {
-      name: 'Doctors',
-      baseline: baseline.doctors_assigned,
-      current: scenario.result.doctors_assigned,
-      unit: 'staff',
-      isPositive: scenario.result.doctors_assigned >= baseline.doctors_assigned
-    },
-    {
-      name: 'Nurses',
-      baseline: baseline.nurses_assigned,
-      current: scenario.result.nurses_assigned,
-      unit: 'staff',
-      isPositive: scenario.result.nurses_assigned >= baseline.nurses_assigned
-    },
-    {
-      name: 'Avg Wait Time',
-      baseline: baseline.avg_waiting_time,
-      current: scenario.result.avg_waiting_time,
-      unit: 'min',
-      isPositive: scenario.result.avg_waiting_time <= baseline.avg_waiting_time
-    },
-    {
-      name: 'Daily Cost',
-      baseline: baseline.total_operational_cost,
-      current: scenario.result.total_operational_cost,
-      unit: '$',
-      isPositive: scenario.result.total_operational_cost <= baseline.total_operational_cost
-    },
-    {
-      name: 'Optimization Score',
-      baseline: baseline.objective_value,
-      current: scenario.result.objective_value,
-      unit: '/100',
-      isPositive: scenario.result.objective_value >= baseline.objective_value
-    }
-  ]);
 
   return (
     <div className="space-y-6">

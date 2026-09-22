@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { Results } from './components/Results';
 import { Charts } from './components/Charts';
@@ -8,6 +8,17 @@ import { Scenario, OptimizationResult, SimulationResult, saveScenario, updateSce
 import { optimizeResourceAllocation, OptimizationInput } from './lib/optimization';
 import { simulatePatientFlow, SimulationSnapshot } from './lib/simulation';
 import { Settings } from 'lucide-react';
+
+function mapSimulationResults(rows: SimulationResult[], totalBeds: number): SimulationSnapshot[] {
+  return rows.map(row => ({
+    timeStep: row.time_step,
+    queueLength: row.queue_length,
+    bedsOccupied: row.beds_occupied,
+    avgWaitTime: row.avg_wait_time,
+    staffUtilization: row.staff_utilization,
+    bedsUtilization: totalBeds > 0 ? Math.round((row.beds_occupied / totalBeds) * 1000) / 10 : 0
+  }));
+}
 
 export default function App() {
   const [scenario, setScenario] = useState<Scenario | null>(null);
@@ -27,6 +38,7 @@ export default function App() {
 
   useEffect(() => {
     initializeApp();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function initializeApp() {
@@ -75,7 +87,7 @@ export default function App() {
       if (result) {
         setOptimizationResult(result);
         const simResults = await getSimulationResults(result.id);
-        setSimulationData(simResults as SimulationSnapshot[]);
+        setSimulationData(mapSimulationResults(simResults, result.beds_allocated));
       }
     } catch (error) {
       console.error('Failed to load scenario data:', error);

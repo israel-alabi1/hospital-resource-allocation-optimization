@@ -1,4 +1,3 @@
-import React from 'react';
 import { SimulationSnapshot } from '../lib/simulation';
 
 interface ChartsProps {
@@ -196,7 +195,7 @@ export function Charts({ simulationData, isLoading }: ChartsProps) {
     );
   }
 
-  const utilizationHeatmap = generateUtilizationHeatmap(simulationData);
+  const utilizationHeatmap = generateUtilizationHeatmap();
 
   return (
     <div className="space-y-6">
@@ -205,7 +204,7 @@ export function Charts({ simulationData, isLoading }: ChartsProps) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <LineChart
           data={simulationData}
-          dataKey="queue_length"
+          dataKey="queueLength"
           color="#3b82f6"
           title="Queue Length Over Time"
         />
@@ -220,13 +219,13 @@ export function Charts({ simulationData, isLoading }: ChartsProps) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <LineChart
           data={simulationData}
-          dataKey="avg_wait_time"
+          dataKey="avgWaitTime"
           color="#f97316"
           title="Average Wait Time Over Time"
         />
         <LineChart
           data={simulationData}
-          dataKey="staff_utilization"
+          dataKey="staffUtilization"
           color="#8b5cf6"
           title="Staff Utilization Over Time"
         />
@@ -237,7 +236,7 @@ export function Charts({ simulationData, isLoading }: ChartsProps) {
   );
 }
 
-function generateUtilizationHeatmap(simulationData: SimulationSnapshot[]): number[][] {
+function generateUtilizationHeatmap(): number[][] {
   const staffLevels = [5, 10, 15, 20, 25];
   const demandLevels = [25, 50, 75, 100, 125];
   const heatmap: number[][] = [];

@@ -139,7 +139,6 @@ export function optimizeResourceAllocation(input: OptimizationInput): Optimizati
   const equipmentCost = equipmentDeployed * input.equipmentCost;
   const totalOperationalCost = shiftCost + bedMaintenanceCost + equipmentCost;
 
-  const avgWorkload = (doctorUtilization + nurseUtilization) / 2;
   const workloadBalance = 100 - Math.abs(doctorUtilization - nurseUtilization);
 
   const normalizedWaitingTime = Math.min(100, avgWaitingTime / 5);

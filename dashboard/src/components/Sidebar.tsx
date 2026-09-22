@@ -1,5 +1,3 @@
-import React from 'react';
-import { ChevronDown } from 'lucide-react';
 import { Scenario } from '../lib/supabase';
 
 interface SidebarProps {

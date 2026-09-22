@@ -43,7 +43,6 @@ export function simulatePatientFlow(input: SimulationInput, hoursToSimulate: num
   const arrivals = generateArrivalTimes(totalPatients, hoursToSimulate);
   const serviceTimes = generateServiceTimes(totalPatients, input.avgTreatmentTime);
 
-  const queue: { arrivalTime: number; serviceTime: number }[] = [];
   const staffBusyUntil: number[] = Array(input.numStaff).fill(0);
   const bedsOccupiedUntil: number[] = Array(input.numBeds).fill(0);
   const waitTimes: number[] = [];
