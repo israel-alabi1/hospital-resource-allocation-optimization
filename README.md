@@ -1,3 +1,5 @@
+[![CI](https://github.com/israel-alabi1/hospital-resource-allocation-optimization/actions/workflows/ci.yml/badge.svg)](https://github.com/israel-alabi1/hospital-resource-allocation-optimization/actions/workflows/ci.yml)
+
 # Optimizing Hospital Resource Allocation During Peak Demand
 
 A multi-objective optimization framework — combining **Mixed-Integer Linear Programming (MILP)**, **queueing theory**, and a **genetic algorithm (GA)** — for allocating hospital staff, beds, and equipment during seasonal outbreaks or pandemic surges. The repository contains the full technical report and an interactive React dashboard that lets a user explore staffing decisions under different demand scenarios.
@@ -90,7 +92,9 @@ Planned extensions (discussed in the report): stochastic programming under deman
 
 ## Author
 
-**Funmilayo Adegoroye** — Nursing graduate (First Class Honours, University of Ibadan) with research interests in nursing education, workplace bullying & incivility, and gender and health. This project applies operations-research methods to a healthcare operations problem.
+**Israel Oluwamayomikun Alabi** 
+MSc Mathematical Science (Major: Data Science)
+African Institute for Mathematical Sciences, Cameroon
 
 ## License
 
